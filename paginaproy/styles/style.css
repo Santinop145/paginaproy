@@ -1,0 +1,45 @@
+body{
+    height: 95vh;
+    background: radial-gradient(#ff960c88, rgba(255, 19, 176, 0.637));
+    background-color: rgba(132, 0, 255, 0.637);
+}
+
+header{
+    height: 10%;
+}
+
+nav{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(violet, purple);
+}
+
+h1{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+}
+
+.pagetop{
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main{
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: bottom;
+}
