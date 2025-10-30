@@ -1,13 +1,13 @@
 body{
     height: 100vh;
     margin: 0;
-    background: radial-gradient(#ff960c88, rgba(255, 19, 176, 0.637));
+    background: radial-gradient(#ffa12794, rgba(255, 33, 155, 0.637));
     background-color: rgba(132, 0, 255, 0.637);
     font-family: sans-serif;
 }
 
 header{
-    height: 10%;
+    height: 2%;
 }
 
 #hamburguesaNav{
@@ -15,14 +15,14 @@ header{
     left: 0;
     top: 0;
     height: 100vh;
-    width: 250px;
+    width: 150px;
     transform: translateX(-110%);
-    transition: transform 240ms ease;
+    transition: transform 100ms ease;
     background: linear-gradient(rgba(238, 130, 238, 0.644), rgba(128, 0, 128, 0.651));
     z-index: 1001;
     display: flex;
     align-items: flex-start;
-    padding-top: 2rem;
+    padding-top: 80px;
     box-shadow: 2px 0 10px rgba(0,0,0,0.25);
 }
 
@@ -44,12 +44,38 @@ header{
     padding: 12px 14px;
     width: calc(100% - 32px);
     height: auto;
-    border: 2px solid rgba(0,0,0,0.2);
-    background: linear-gradient(rgba(202, 80, 202, 0.479), rgba(128, 0, 128, 0.432));
+    border: 2px solid rgba(0, 0, 0, 0.308);
+    background: linear-gradient(rgba(202, 80, 202, 0.849), rgba(128, 0, 128, 0.774));
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.275); 
     color: #fff;
     font-size: 1rem;
     border-radius: 6px;
     cursor: pointer;
+    transition: border-radius 0.05s, scale 0.05s, background-color 0.1s, box-shadow 0.05s;
+}
+
+#hamburguesaNav button:hover{
+    border: 2px solid rgba(0,0,0,0.2);
+    background: linear-gradient(rgba(202, 80, 202, 0.418), rgba(128, 0, 128, 0.514));
+    background-color: rgba(255, 255, 255, 0.151);
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#hamburguesaNav button:active{
+    border: 2px solid rgba(0,0,0,0.2);
+    background: linear-gradient(rgba(202, 80, 202, 0.418), rgba(128, 0, 128, 0.514));
+    background-color: rgba(255, 255, 255, 0.151);
+    color: #fff;
+    border-radius: 10px;
+    scale: 90%;
+    cursor: pointer;
+}
+
+.placeholder{
+    opacity: 0%;
 }
 
 button.nav{
@@ -57,11 +83,13 @@ button.nav{
     position: fixed;
     left: 18px;
     top: 18px;
-    background: radial-gradient(rgb(250, 250, 250), rgb(148, 148, 148));
-    border: 1px simple;
+    background: radial-gradient(rgba(250, 250, 250, 0.459), rgba(163, 163, 163, 0.404));
+    background-color: rgb(207, 207, 207);
+    border: 1px solid;
     height: 44px;
     width: 44px;
     border-radius: 50%;
+    box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.4); 
     color: rgb(0, 0, 0);
     font-size: 20px;
     z-index: 1002;
@@ -69,6 +97,19 @@ button.nav{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+button.nav:hover{
+    background: radial-gradient(rgba(255, 255, 255, 0.247), rgba(138, 138, 138, 0.466));
+    box-shadow: 2px 2px 15px 5px rgba(0, 0, 0, 0.4); 
+    background-color: white;
+}
+
+button.nav:active{
+    background: radial-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    box-shadow: 2px 2px 15px 5px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
 }
 
 h1{
@@ -87,7 +128,7 @@ h1{
 }
 
 main{
-    height: 75%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -102,41 +143,53 @@ footer{
     justify-content: center;
 }
 
+/* Keep the container height that fits your page (e.g. 375px) */
 .carrusel-container {
   position: relative;
   margin: auto;
-  width: 80vw;
-  height: 100%;
+  width: 50vw;              /* initial width, JS will override */
+  height: 375px;            /* keep this as the page-fit height you like */
   overflow: hidden;
+  z-index: 998;
+  transition: width 0.4s ease; /* animate width changes */
+  max-width: 90vw;          /* never get wider than viewport */
+  min-width: 200px;         /* sensible minimum */
 }
 
+/* Carousel stays horizontally scrollable, each slide is full "page" */
 .carrusel {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
   scroll-snap-type: x mandatory;
   width: 100%;
-  height: 500px;
+  height: 100%;
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  z-index: 999;
+  overflow-x: scroll;
 }
 
-.carrusel::-webkit-scrollbar {
-  display: none;
-}
-
+/* Each slide is full width of the container (so snapping works) */
 .carrusel li {
   flex: 0 0 100%;
   list-style: none;
   scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+/* Make images scale to the container height and keep aspect ratio */
 .carrusel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 100%;     /* fill container height */
+  width: auto;      /* auto width so aspect ratio is preserved */
+  display: block;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .scroll-btn {
@@ -144,16 +197,18 @@ footer{
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 74, 201, 0.685);
-  border: 1px simple;
+  border: 1px double;
   font-size: 25px;
-  padding: 10px 15px;
+  padding: 10px 12px;
+  box-shadow: 2px 2px 12px 1px rgba(0, 0, 0, 0.205);
   cursor: pointer;
   border-radius: 50%;
   z-index: 10;
-  transition: background 0.2s, transform 0.1s;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.1s;
 }
 .scroll-btn:hover {
   background: rgba(253, 107, 246, 0.849);
+  box-shadow: 2px 2px 12px 1px rgba(0, 0, 0, 0.226);
 }
 .scroll-btn:active {
   transform: translateY(-50%) scale(0.95);
@@ -174,8 +229,9 @@ footer{
 
 .fijaratardecer{
     position: fixed;
-    top: 75%;
     left: 0;
+    bottom: 0%;
+    transform: translateY(50%);
     width: 100%;
     height: 50%;
     z-index: -1;
@@ -190,8 +246,25 @@ footer{
     width: 100%;
     background: radial-gradient(rgba(216, 107, 5, 0.507), rgba(218, 196, 0, 0.315));
     border-radius: 100%;
+    opacity: 90%;
     overflow: hidden;
     z-index: -2;
+}
+
+.palmera{
+    position: fixed;
+    opacity: 33%;
+    left: 70%;
+    z-index: -3;
+}
+
+.palmera2{
+  opacity: 33%;
+  position: fixed;
+  scale: 75%;
+  top: 15%;
+  transform: scaleX(-1);
+  z-index: -3;
 }
 
 .raya{
@@ -204,7 +277,8 @@ footer{
     z-index: -1;
 }
 
-.raya:nth-child(1) { bottom: 53%; height: 10px; }
+.raya:nth-child(1) { bottom: 52%; height: 10px; }
 .raya:nth-child(2) { bottom: 59%; height: 8px; }
-.raya:nth-child(3) { bottom: 65%; height: 6px;}
-.raya:nth-child(4) { bottom: 71%; }
+.raya:nth-child(3) { bottom: 66%; height: 6px;}
+.raya:nth-child(4) { bottom: 72%; }
+.raya:nth-child(5) { bottom: 77%; height: 3px;}
