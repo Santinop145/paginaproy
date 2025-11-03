@@ -3,11 +3,24 @@ body{
     margin: 0;
     background: radial-gradient(#ffa12794, rgba(255, 33, 155, 0.637));
     background-color: rgba(132, 0, 255, 0.637);
-    font-family: sans-serif;
+    font-family: monospace;
+    font-size: 20px;
 }
 
 header{
     height: 2%;
+}
+
+article{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+article p{
+    width: 50%;
+    text-align: center;
 }
 
 #hamburguesaNav{
@@ -130,7 +143,6 @@ h1{
     margin: auto;
     justify-content: center;
     align-items: center;
-    font-family: monospace;
 }
 
 .pagetop{
@@ -139,6 +151,15 @@ h1{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.pagebottom{
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 main{
@@ -220,7 +241,7 @@ footer{
     cursor: pointer;
     border-radius: 50%;
     z-index: 10;
-    transition: background 0.2s, transform 0.1s, box-shadow 0.1s;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.1s, border 0.2s;
 }
 .scroll-btn:hover {
     background: rgba(253, 107, 246, 0.849);
@@ -233,6 +254,12 @@ footer{
 
 .scroll-btn.left { left: 10px; }
 .scroll-btn.right { right: 10px; }
+.scroll-btn.right:focus {
+    border: 2.5px rgb(66, 0, 97) solid;
+}
+.scroll-btn.left:focus {
+    border: 2.5px rgb(66, 0, 97) solid;
+}
 
 .viñeta{
     position: fixed;
