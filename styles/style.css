@@ -177,11 +177,12 @@ form{
     justify-content: center;
     align-items: center;
     margin: auto;
-    background: radial-gradient(rgba(163, 74, 204, 0.6) rgba(247, 64, 253, 0.4));
+    background: radial-gradient(rgba(86, 33, 94, 0.15), rgba(247, 64, 253, 0.2));
     background-color: rgba(255, 158, 11, 0.8);
     border: 3px solid black;
     border-radius: 10px;
     box-shadow: 2px 2px 15px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 form p{
